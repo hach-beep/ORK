@@ -1,22 +1,19 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ORK | Healthcare Digital Architecture</title>
     
-    <!-- Premium Fonts -->
+    <!-- Premium Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #013061;    /* Deep Navy */
-            --secondary: #93CAFF;  /* Sky Blue */
-            --neutral: #979B9D;    /* Professional Gray */
-            --bg-light: #EEFCFF;   /* Clinical Light Blue */
+            --primary: #013061;    /* Deep Navy from your photo */
+            --secondary: #93CAFF;  /* Sky Blue from your photo */
+            --neutral: #979B9D;    /* Gray from your photo */
+            --bg-light: #EEFCFF;   /* Lightest Blue from your photo */
             --white: #ffffff;
             --text-main: #0f172a;
         }
@@ -28,127 +25,132 @@
             background-color: var(--bg-light); 
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; width: 100%; top: 0; z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: rgba(238, 252, 255, 0.8);
-            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(1, 48, 97, 0.1);
+            padding: 20px 5%; background: var(--white);
+            border-bottom: 2px solid var(--secondary);
         }
-        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px; }
-        .nav-links a { text-decoration: none; color: var(--primary); margin-left: 30px; font-weight: 600; font-size: 0.9rem; }
-        .btn-terminal { background: var(--primary); color: white !important; padding: 10px 20px; border-radius: 50px; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+        .btn-terminal { background: var(--primary); color: white; text-decoration: none; padding: 8px 15px; border-radius: 50px; font-size: 0.8rem; }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            padding: 0 8%; background: radial-gradient(circle at top right, #dbeafe, transparent);
+            padding: 80px 5% 40px 5%;
+            background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
+            text-align: center;
         }
-        .motto { color: var(--secondary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; color: var(--primary); margin-bottom: 20px; }
-        .hero p { max-width: 600px; font-size: 1.2rem; color: var(--neutral); margin-bottom: 40px; }
+        .motto { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 15px; display: block;}
+        .hero h1 { font-size: 2.5rem; line-height: 1.2; color: var(--primary); margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; color: var(--text-main); margin-bottom: 30px; }
 
-        /* --- BENTO SECTIONS --- */
-        section { padding: 100px 8%; }
-        .section-title { color: var(--primary); font-size: 2rem; font-weight: 800; margin-bottom: 40px; }
-        
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;
-        }
+        /* --- SECTIONS --- */
+        section { padding: 40px 5%; }
         .card {
-            background: var(--white); padding: 40px; border-radius: 30px;
-            border: 1px solid rgba(147, 202, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(1, 48, 97, 0.05);
+            background: var(--white); padding: 30px; border-radius: 20px;
+            margin-bottom: 20px; border-left: 5px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
-        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; }
-        .card p { color: var(--neutral); font-size: 1rem; }
-        .full-width { grid-column: span 2; }
+        .card h3 { color: var(--primary); margin-bottom: 10px; }
+        .card p { color: var(--text-main); }
 
-        /* --- PROJECTS SECTION --- */
-        .project-card {
-            background: var(--primary); color: white; padding: 50px; border-radius: 40px;
-            display: flex; justify-content: space-between; align-items: center;
+        /* --- PROJECT BOX --- */
+        .project-box {
+            background: var(--primary); color: white; padding: 40px 30px; border-radius: 25px;
+            text-align: center; margin-top: 20px;
         }
-        .project-info { max-width: 60%; }
-        .project-info h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .project-box h2 { margin-bottom: 15px; }
         .btn-live { 
             display: inline-block; background: var(--secondary); color: var(--primary); 
-            padding: 15px 35px; border-radius: 15px; text-decoration: none; 
-            font-weight: 800; margin-top: 20px; transition: 0.3s;
+            padding: 15px 30px; border-radius: 12px; text-decoration: none; 
+            font-weight: 800; margin-top: 20px;
         }
-        .btn-live:hover { transform: scale(1.05); background: white; }
 
-        /* --- TEAM SECTION --- */
-        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .member h4 { font-size: 1.8rem; color: var(--primary); margin-bottom: 5px; }
-        .role { color: var(--secondary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px; display: block; }
+        /* --- TEAM --- */
+        .team-member { margin-bottom: 30px; }
+        .role { color: var(--neutral); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; }
+        .name { font-size: 1.4rem; color: var(--primary); font-weight: 800; }
 
-        /* --- FOOTER --- */
-        footer { background: #000; color: white; padding: 80px 8%; text-align: center; }
-        .footer-logo { font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
-        .copyright { margin-top: 50px; font-size: 0.8rem; opacity: 0.5; }
-
-        @media (max-width: 768px) {
-            .bento-grid, .team-grid { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-            .project-card { flex-direction: column; text-align: center; }
-            .project-info { max-width: 100%; }
-        }
+        footer { background: #000; color: white; padding: 60px 5%; text-align: center; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">ORK.</div>
-        <div class="nav-links">
-            <a href="#story">Genesis</a>
-            <a href="#projects">Deployments</a>
-            <a href="#team">Leadership</a>
-            <a href="#" class="btn-terminal">Access Terminal</a>
-        </div>
+        <a href="#" class="btn-terminal">Access Terminal</a>
     </nav>
 
-    <main>
-        <!-- SECTION 1: MOTTO & MISSION -->
-        <section class="hero">
-            <div class="motto" data-aos="fade-down">A New Rhythm for Healing</div>
-            <h1 data-aos="fade-up">The Architecture of Modern Recovery.</h1>
-            <p data-aos="fade-up" data-aos-delay="200">
-                ORK is a health informatics firm engineering the digital backbone of modern medical practice. 
-                We transform clinical chaos into synchronized, high-fidelity environments.
-            </p>
-        </section>
+    <!-- SECTION 1: MOTTO -->
+    <header class="hero">
+        <span class="motto">A New Rhythm for Healing</span>
+        <h1>The Architecture of Modern Recovery.</h1>
+        <p>ORK is a health informatics firm engineering the digital backbone of modern medical practice.</p>
+    </header>
 
-        <!-- SECTION 2 & 3: STARTUP STORY & VISION -->
-        <section id="story">
-            <div class="bento-grid">
-                <div class="card" data-aos="fade-right">
-                    <span class="role">The Genesis</span>
-                    <h3>Born in the Ward.</h3>
-                    <p>ORK emerged from the intersection of the hospital ward and the code terminal. Founded in Kirkuk, we began by observing the friction between patient anxiety and clinical data loss.</p>
-                </div>
-                <div class="card" data-aos="fade-left">
-                    <span class="role">The Problem</span>
-                    <h3>Clinical Entropy.</h3>
-                    <p>Iraqi healthcare operates under disorder caused by fragile paper records and administrative bottlenecks that devalue the time of both doctor and patient.</p>
-                </div>
-                <div class="card full-width" data-aos="zoom-in">
-                    <span class="role">The Vision</span>
-                    <h3>A Digital Civilization.</h3>
-                    <p>To establish a unified digital infrastructure for the Iraqi medical sector. We envision a future where every private clinic operates as a high-performance command center, powered by data integrity and zero-friction access.</p>
-                </div>
-            </div>
-        </section>
+    <!-- SECTION 2: STARTUP STORY -->
+    <section>
+        <div class="card">
+            <span class="role">The Genesis</span>
+            <h3>Born in the Ward.</h3>
+            <p>ORK emerged from the intersection of the hospital ward and the code terminal. Founded in Kirkuk, we began by observing the friction between patient anxiety and clinical data loss.</p>
+        </div>
+    </section>
 
-        <!-- SECTION 4: PROJECTS -->
-        <section id="projects">
-            <h2 class="section-title">Active Deployments</h2>
-            <div class="project-card" data-aos="flip-up">
-                <div class="project-info">
-                    <span style="color: var(--secondary); font-weight: bold;">FLAGSHIP PROJECT</span>
-                    <h2>CLINCO V2</h2>
-                    <p>A high-end, QR-integrated platform that automates the entire patient journey—from 24/7 remote booking to high-integrity Electronic Medical Records (EMR).</p>
-                    <a href="https://hach-beep.github.io/Ka-/dr.html" class="btn-liv
+    <!-- SECTION 3: PROBLEM & VISION -->
+    <section>
+        <div class="card">
+            <span class="role">The Problem</span>
+            <h3>Clinical Entropy.</h3>
+            <p>Iraqi healthcare operates under disorder caused by fragile paper records and administrative bottlenecks that devalue the time of both doctor and patient.</p>
+        </div>
+        <div class="card">
+            <span class="role">The Vision</span>
+            <h3>A Digital Civilization.</h3>
+            <p>To establish a unified digital infrastructure for the Iraqi medical sector. We envision a future where every private clinic operates as a high-performance command center.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PROJECTS -->
+    <section id="projects">
+        <div class="project-box">
+            <span class="role" style="color: var(--secondary)">Active Deployment</span>
+            <h2>CLINCO V2</h2>
+            <p>Our flagship Patient Flow Management system. Automating the journey from 24/7 booking to EMR generation.</p>
+            <a href="https://hach-beep.github.io/Ka-/dr.html" class="btn-live">Launch Patient Dashboard →</a>
+        </div>
+    </section>
+
+    <!-- SECTION 5: THE ORK STANDARD -->
+    <section>
+        <div class="card" style="background: var(--secondary); border: none;">
+            <h3 style="color: var(--primary)">The ORK Standard</h3>
+            <p style="font-weight: 600;">We build for the Iraqi reality: Offline-First, Cloud-Synchronized, and Privacy-Hardened.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TEAM -->
+    <section>
+        <h2 style="color: var(--primary); margin-bottom: 20px;">Leadership</h2>
+        <div class="team-member">
+            <span class="role">Founder & CEO</span>
+            <div class="name">Registered Nurse</div>
+            <p>B.Nurs, University of Kirkuk. Specialist in bridging the gap between bedside care and digital informatics.</p>
+        </div>
+        <div class="team-member">
+            <span class="role">Chief Technology Officer</span>
+            <div class="name">Ahmed Al Qaisi</div>
+            <p>Veteran software architect with over 20 years of experience in engineering complex digital systems.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>ORK Smart Solutions | Kirkuk Research Hub</p>
+        <p style="opacity: 0.5; margin-top: 10px;">&copy; 2025 Made for the Iraqi Medical Frontier</p>
+    </footer>
+
+</body>
+</html>
