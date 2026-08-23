@@ -1,190 +1,137 @@
         
-        <!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORK | New Rhythm of Melody</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
+    <title>ORK | Healthcare Digital Transformation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --bg-accent: #0a0a0a;
-            --accent-color: #00ffcc; 
-            --text-main: #ffffff;
-            --text-dim: #888888;
+            --primary: #013061; /* Navy */
+            --accent: #5b8dfa; /* Medical Blue */
+            --bg-light: #EEECFF;
+            --white: #ffffff;
+            --text-gray: #4a5568;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; margin: 0; color: var(--primary); background: var(--white); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #eee; }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: 2px; }
+        .nav-links a { text-decoration: none; color: var(--primary); margin-left: 30px; font-weight: 500; font-size: 0.9rem; }
+        .btn-cta { background: var(--primary); color: white !important; padding: 10px 20px; border-radius: 8px; }
 
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
+        /* Hero Section */
+        header { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%); }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--primary); }
+        .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; }
 
-        .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 8px;
-            font-weight: 800;
-        }
+        /* The Problem/Solution */
+        .section { padding: 80px 10%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .card { padding: 40px; border-radius: 20px; background: var(--bg-light); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
-        /* SECTION 1: HERO */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #0e161d 0%, var(--bg-color) 80%);
-            padding: 0 20px;
-        }
+        /* Founder Section */
+        .founder-section { background: var(--primary); color: white; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+        .founder-img { width: 100%; height: 500px; background: #ddd center/cover; }
+        .founder-content { padding: 60px; }
 
-        .tagline {
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
+        /* Pricing */
+        .price-card { border: 2px solid var(--bg-light); padding: 50px; border-radius: 30px; }
+        .price-card.featured { border-color: var(--accent); background: var(--bg-light); }
+        .price { font-size: 3rem; font-weight: 900; margin: 20px 0; }
 
-        .motto {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            line-height: 1;
-            margin-bottom: 40px;
-            background: linear-gradient(to bottom, #ffffff 40%, #555555 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Footer */
+        footer { background: #0a0a0a; color: white; padding: 50px 10%; text-align: center; }
 
-        .general-info {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            font-weight: 300;
-        }
-
-        /* SECTION 2: THE MISSION */
-        .mission {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg-accent);
-            padding: 100px 20px;
-            border-top: 1px solid #111;
-        }
-
-        .mission-content {
-            max-width: 1000px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .mission-header span {
-            color: var(--accent-color);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .mission-header h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            margin-top: 15px;
-            line-height: 1.2;
-        }
-
-        .mission-body p {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-
-        .highlight-box {
-            border-left: 2px solid var(--accent-color);
-            padding-left: 25px;
-            margin-top: 40px;
-        }
-
-        .highlight-box h3 {
-            font-size: 1rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive */
-        @media (max-width: 850px) {
-            .mission-content { grid-template-columns: 1fr; text-align: left; }
-            nav { padding: 20px; }
-            .motto { font-size: 3.5rem; }
+        @media (max-width: 768px) {
+            header, .founder-section { grid-template-columns: 1fr; padding: 50px 5%; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ORK</div>
+        <div class="logo">ORK.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#product">Clinco</a>
+            <a href="#pricing">Pricing</a>
+            <a href="patient.html" class="btn-cta">Patient Portal</a>
+        </div>
     </nav>
 
-    <!-- SECTION 1: IDENTITY & MOTTO -->
-    <section class="hero">
-        <span class="tagline">Healthcare Technology</span>
-        <h1 class="motto">New Rhythm <br> of Melody.</h1>
-        <p class="general-info">
-            ORK is a clinical-led technology firm bridging the gap between nursing expertise 
-            and health informatics to synchronize the future of medical care.
-        </p>
-    </section>
+    <header>
+        <div class="hero-text">
+            <h1>Digitizing Iraq's Private Healthcare Sector.</h1>
+            <p>ORK builds high-performance, offline-first systems designed for the unique chaos of high-volume medical clinics.</p>
+            <a href="#product" style="text-decoration:none; background:var(--accent); color:white; padding:15px 40px; border-radius:10px; font-weight:bold; display:inline-block;">Explore Our Solutions</a>
+        </div>
+        <div class="hero-visual">
+            <!-- You can place a high-tech SVG or mockup here -->
+            <div style="width:100%; height:300px; background:var(--primary); border-radius:30px; opacity:0.1;"></div>
+        </div>
+    </header>
 
-    <!-- SECTION 2: THE MISSION -->
-    <section class="mission">
-        <div class="mission-content">
-            <div class="mission-header">
-                <span>02 / OUR MISSION</span>
-                <h2>A Mission to Synchronize Iraq's Healthcare.</h2>
+    <section class="section" id="about">
+        <h2>The ORK Advantage</h2>
+        <p>Global standards meet Iraqi reality.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Stability First</h3>
+                <p>Our systems work 100% offline. Zero reliance on unstable internet connections during clinic hours.</p>
             </div>
-            <div class="mission-body">
-                <p>
-                    Modernizing a healthcare system requires more than just software; it requires a deep understanding of the clinical workflow. We are here to lead the digital evolution of Iraq’s medical landscape.
-                </p>
-                <p>
-                    By integrating nursing wisdom with advanced Health Informatics, we transform fragmented data into a seamless "New Rhythm"—ensuring technology serves the provider and the patient with melody, not noise.
-                </p>
-                <div class="highlight-box">
-                    <h3>The Informatics Catalyst</h3>
-                    <p>Turning clinical challenges into technological solutions for a sustainable, modern health infrastructure.</p>
-                </div>
+            <div class="card">
+                <h3>Dynamic Queue</h3>
+                <p>The "Fluid Logic" (8:2) ensures your waiting room stays empty while your schedule stays full.</p>
+            </div>
+            <div class="card">
+                <h3>Nurse-Led Design</h3>
+                <p>Built by medical professionals for medical professionals. We understand the workflow better than anyone.</p>
             </div>
         </div>
     </section>
+
+    <section class="founder-section">
+        <div class="founder-img" style="background-image: url('https://via.placeholder.com/600x800?text=Founder+Photo');"></div>
+        <div class="founder-content">
+            <small style="color:var(--accent); font-weight:bold;">A MESSAGE FROM THE FOUNDER</small>
+            <h2>Clinical experience, coded.</h2>
+            <p>"As a nurse, I saw the frustration of patients waiting for 4 hours and doctors drowning in paperwork. At ORK, we didn't just build an app; we built a system that respects everyone's time."</p>
+            <strong>Haiyam Khalid</strong><br>
+            <span>Founder & CEO, ORK</span>
+        </div>
+    </section>
+
+    <section class="section" id="pricing">
+        <h2>Our Model</h2>
+        <div class="grid">
+            <div class="price-card featured">
+                <h3>Clinco Enterprise</h3>
+                <p>Full EMR + Live Queue Management</p>
+                <div class="price">$50<small style="font-size:1rem;">/month</small></div>
+                <ul style="list-style:none; padding:0; margin-bottom:30px; text-align:left;">
+                    <li>✓ Offline Persistence Engine</li>
+                    <li>✓ Parallel Doctor Dashboard</li>
+                    <li>✓ Smart Notification System</li>
+                    <li>✓ Free Staff Training</li>
+                </ul>
+                <p><small>* $250 initial setup fee applies</small></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom:20px;">ORK.</div>
+        <p>Smart Solutions for the Private Medical Sector.</p>
+        <p style="opacity: 0.5; font-size: 0.8rem;">Kirkuk, Iraq | Powered by Firebase & .NET MAUI</p>
+        <p style="opacity: 0.3; margin-top:30px;">&copy; 2025 ORK Enterprise. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
