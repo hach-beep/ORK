@@ -1,137 +1,222 @@
-        
-                <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORK | Healthcare Digital Transformation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>ORK | Healthcare Digital Architecture</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #013061; /* Navy */
-            --accent: #5b8dfa; /* Medical Blue */
-            --bg-light: #EEECFF;
-            --white: #ffffff;
-            --text-gray: #4a5568;
+            --primary: #000000;
+            --secondary: #0055ff;
+            --accent: #00d4ff;
+            --glass: rgba(255, 255, 255, 0.7);
+            --border: rgba(0, 0, 0, 0.08);
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
         }
 
-        * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; margin: 0; color: var(--primary); background: var(--white); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #ffffff; 
+            color: var(--text-main); 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #eee; }
-        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: 2px; }
-        .nav-links a { text-decoration: none; color: var(--primary); margin-left: 30px; font-weight: 500; font-size: 0.9rem; }
-        .btn-cta { background: var(--primary); color: white !important; padding: 10px 20px; border-radius: 8px; }
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .logo-dot { width: 10px; height: 10px; background: var(--secondary); border-radius: 50%; }
+        
+        .nav-links a { text-decoration: none; color: var(--text-main); margin-left: 35px; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+        .btn-launch { background: var(--primary); color: white !important; padding: 12px 24px; border-radius: 100px; font-size: 0.85rem; }
 
-        /* Hero Section */
-        header { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%); }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--primary); }
-        .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; }
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 10%; position: relative; overflow: hidden;
+        }
+        
+        /* Moving Background Gradient */
+        .hero-bg {
+            position: absolute; top: -20%; width: 100%; height: 140%;
+            background: radial-gradient(circle at 50% 50%, #eef3ff 0%, #ffffff 100%);
+            z-index: -1;
+        }
 
-        /* The Problem/Solution */
-        .section { padding: 80px 10%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-        .card { padding: 40px; border-radius: 20px; background: var(--bg-light); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .badge {
+            background: #f2f2f7; color: var(--secondary); padding: 6px 16px; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 700; margin-bottom: 30px; border: 1px solid var(--border);
+        }
 
-        /* Founder Section */
-        .founder-section { background: var(--primary); color: white; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
-        .founder-img { width: 100%; height: 500px; background: #ddd center/cover; }
-        .founder-content { padding: 60px; }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.04em;
+            margin-bottom: 25px; background: linear-gradient(to bottom, #000, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-        /* Pricing */
-        .price-card { border: 2px solid var(--bg-light); padding: 50px; border-radius: 30px; }
-        .price-card.featured { border-color: var(--accent); background: var(--bg-light); }
-        .price { font-size: 3rem; font-weight: 900; margin: 20px 0; }
+        .hero p { font-size: 1.4rem; color: var(--text-muted); max-width: 700px; margin-bottom: 40px; font-weight: 400; }
 
-        /* Footer */
-        footer { background: #0a0a0a; color: white; padding: 50px 10%; text-align: center; }
+        /* --- BENTO GRID SECTION --- */
+        .section-label { text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
+        
+        .bento-container {
+            padding: 100px 8%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 350px); gap: 20px;
+        }
 
-        @media (max-width: 768px) {
-            header, .founder-section { grid-template-columns: 1fr; padding: 50px 5%; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
+        .bento-item {
+            background: #ffffff; border-radius: 32px; padding: 40px; border: 1px solid var(--border);
+            position: relative; overflow: hidden; transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .bento-item:hover { transform: scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        
+        .bento-1 { grid-column: span 2; background: linear-gradient(145deg, #f9f9fb 0%, #fff 100%); }
+        .bento-2 { grid-column: span 2; background: var(--primary); color: #fff; }
+        .bento-3 { grid-column: span 1; }
+        .bento-4 { grid-column: span 3; background: #fdfdff; }
+
+        .bento-item h3 { font-size: 1.8rem; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .bento-item p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
+
+        /* --- INTERACTIVE TECH SECTION --- */
+        .dark-tech-section {
+            background: #000; color: #fff; padding: 120px 8%; border-radius: 60px; margin: 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+        }
+
+        .tech-line {
+            height: 1px; width: 100%; background: linear-gradient(to right, var(--secondary), transparent);
+            margin: 20px 0; opacity: 0.5;
+        }
+
+        .stat-number { font-size: 4rem; font-weight: 800; color: var(--secondary); margin-bottom: 10px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 100px 8% 50px; background: #fff; text-align: left; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; }
+        .copyright { margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); display: flex; justify-content: space-between; }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 1024px) {
+            .bento-container { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .bento-item { grid-column: span 1 !important; height: 350px; }
+            .dark-tech-section { grid-template-columns: 1fr; gap: 50px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ORK.</div>
+        <div class="logo"><div class="logo-dot"></div> ORK SOLUTIONS</div>
         <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#product">Clinco</a>
-            <a href="#pricing">Pricing</a>
-            <a href="patient.html" class="btn-cta">Patient Portal</a>
+            <a href="#vision">Architecture</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#specs">Infrastructure</a>
+            <a href="patient.html" class="btn-launch">Access Terminal</a>
         </div>
     </nav>
 
-    <header>
-        <div class="hero-text">
-            <h1>Digitizing Iraq's Private Healthcare Sector.</h1>
-            <p>ORK builds high-performance, offline-first systems designed for the unique chaos of high-volume medical clinics.</p>
-            <a href="#product" style="text-decoration:none; background:var(--accent); color:white; padding:15px 40px; border-radius:10px; font-weight:bold; display:inline-block;">Explore Our Solutions</a>
-        </div>
-        <div class="hero-visual">
-            <!-- You can place a high-tech SVG or mockup here -->
-            <div style="width:100%; height:300px; background:var(--primary); border-radius:30px; opacity:0.1;"></div>
-        </div>
-    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="badge" data-aos="fade-down">V 2.0.1 SYSTEM PROTOCOL</div>
+            <h1 data-aos="fade-up" data-aos-delay="200">The Architecture of<br>Modern Recovery.</h1>
+            <p data-aos="fade-up" data-aos-delay="400">ORK develops high-fidelity digital infrastructure that eliminates clinical entropy, synchronizing patient flow with precision logic.</p>
+            <div data-aos="zoom-in" data-aos-delay="600">
+                <a href="#vision" style="background:var(--primary); color:#fff; padding:20px 40px; border-radius:100px; text-decoration:none; font-weight:600;">Initialize Deployment</a>
+            </div>
+        </section>
 
-    <section class="section" id="about">
-        <h2>The ORK Advantage</h2>
-        <p>Global standards meet Iraqi reality.</p>
-        <div class="grid">
-            <div class="card">
-                <h3>Stability First</h3>
-                <p>Our systems work 100% offline. Zero reliance on unstable internet connections during clinic hours.</p>
+        <section class="bento-container" id="vision">
+            <div class="bento-item bento-1" data-aos="fade-right">
+                <div class="section-label">Proprietary Engine</div>
+                <h3>Dynamic Equilibrium.</h3>
+                <p>Our proprietary 8:2 balancing algorithm manages the fluctuation of digital and physical demand, ensuring 100% capacity utilization.</p>
             </div>
-            <div class="card">
-                <h3>Dynamic Queue</h3>
-                <p>The "Fluid Logic" (8:2) ensures your waiting room stays empty while your schedule stays full.</p>
+            <div class="bento-item bento-2" data-aos="fade-left">
+                <h3>Absolute<br>Resilience.</h3>
+                <p>Offline-First architecture means your medical data remains accessible even when the network fails. Infrastructure that never sleeps.</p>
             </div>
-            <div class="card">
-                <h3>Nurse-Led Design</h3>
-                <p>Built by medical professionals for medical professionals. We understand the workflow better than anyone.</p>
+            <div class="bento-item bento-3" data-aos="fade-up">
+                <h3>01.</h3>
+                <p>Data Isolation Protocol</p>
             </div>
-        </div>
-    </section>
+            <div class="bento-item bento-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="section-label">Clinical Mastery</div>
+                <h3>Engineered by Clinicians, for Clinicians.</h3>
+                <p>Unlike generic software, ORK systems are architected with 10,000+ hours of clinical nursing insight. We don't build apps; we build clinical environments.</p>
+            </div>
+        </section>
 
-    <section class="founder-section">
-        <div class="founder-img" style="background-image: url('https://via.placeholder.com/600x800?text=Founder+Photo');"></div>
-        <div class="founder-content">
-            <small style="color:var(--accent); font-weight:bold;">A MESSAGE FROM THE FOUNDER</small>
-            <h2>Clinical experience, coded.</h2>
-            <p>"As a nurse, I saw the frustration of patients waiting for 4 hours and doctors drowning in paperwork. At ORK, we didn't just build an app; we built a system that respects everyone's time."</p>
-            <strong>Haiyam Khalid</strong><br>
-            <span>Founder & CEO, ORK</span>
-        </div>
-    </section>
-
-    <section class="section" id="pricing">
-        <h2>Our Model</h2>
-        <div class="grid">
-            <div class="price-card featured">
-                <h3>Clinco Enterprise</h3>
-                <p>Full EMR + Live Queue Management</p>
-                <div class="price">$50<small style="font-size:1rem;">/month</small></div>
-                <ul style="list-style:none; padding:0; margin-bottom:30px; text-align:left;">
-                    <li>✓ Offline Persistence Engine</li>
-                    <li>✓ Parallel Doctor Dashboard</li>
-                    <li>✓ Smart Notification System</li>
-                    <li>✓ Free Staff Training</li>
-                </ul>
-                <p><small>* $250 initial setup fee applies</small></p>
+        <section class="dark-tech-section" id="specs">
+            <div data-aos="fade-right">
+                <div class="section-label" style="color:var(--accent);">Operational Metrics</div>
+                <h2 style="font-size: 3.5rem; margin-bottom: 30px; letter-spacing: -2px;">High-Frequency Intelligence.</h2>
+                <div class="tech-line"></div>
+                <p style="color: #86868b; font-size: 1.1rem;">Built on Google Cloud Infrastructure, our systems process real-time events with sub-50ms latency, keeping your clinic and patients in perfect harmony.</p>
             </div>
-        </div>
-    </section>
+            <div class="tech-stats" data-aos="fade-left">
+                <div>
+                    <div class="stat-number">10m</div>
+                    <p style="color:#86868b">Average Patient Staging Time</p>
+                </div>
+                <div style="margin-top:40px">
+                    <div class="stat-number">99.9%</div>
+                    <p style="color:#86868b">Operational Uptime (Offline-Sync)</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="logo" style="margin-bottom:20px;">ORK.</div>
-        <p>Smart Solutions for the Private Medical Sector.</p>
-        <p style="opacity: 0.5; font-size: 0.8rem;">Kirkuk, Iraq | Powered by Firebase & .NET MAUI</p>
-        <p style="opacity: 0.3; margin-top:30px;">&copy; 2025 ORK Enterprise. All rights reserved.</p>
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 20px;">ORK.</div>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">The standard for private medical sector<br>automation in the MENA region.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 0.8rem; text-transform: uppercase;">Product</h4>
+                <p style="color:var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Clinco V2</p>
+                <p style="color:var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Parallel EMR</p>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Queue Logic</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 0.8rem; text-transform: uppercase;">Company</h4>
+                <p style="color:var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Architecture</p>
+                <p style="color:var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Riyada Program</p>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Support</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ORK Smart Solutions Iraq. All rights reserved.</p>
+            <p>Kirkuk Research Hub | Made for Iraq</p>
+        </div>
     </footer>
 
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+    </script>
 </body>
-</html>
+</html>    
+                
