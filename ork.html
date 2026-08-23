@@ -1,38 +1,32 @@
+        
         <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthTech | Visionary Future</title>
+    <title>ORK | New Rhythm of Melody</title>
     
-    <!-- Google Fonts for that 'Exclusive' Tech Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS VARIABLES - Easy to change colors here */
         :root {
-            --bg-color: #050505;        /* Deep Obsidian */
-            --accent-color: #00ffcc;    /* Surgical Teal */
-            --text-main: #ffffff;       /* Pure White */
-            --text-dim: #888888;        /* Muted Grey */
-            --glow: rgba(0, 255, 204, 0.15);
+            --bg-color: #050505;
+            --bg-accent: #0a0a0a;
+            --accent-color: #00ffcc; 
+            --text-main: #ffffff;
+            --text-dim: #888888;
         }
 
-        /* RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* NAVIGATION */
@@ -40,134 +34,116 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 30px 60px;
+            padding: 40px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(5,5,5,1), rgba(5,5,5,0));
         }
 
         .logo {
             font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1.5rem;
+            letter-spacing: 8px;
             font-weight: 800;
-            text-transform: uppercase;
         }
 
-        .nav-links span {
-            margin-left: 40px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-links span:hover {
-            color: var(--accent-color);
-        }
-
-        /* HERO SECTION (SECTION 1) */
+        /* SECTION 1: HERO */
         .hero {
             height: 100vh;
-            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            padding: 0 20px;
-            /* Subtle radial glow in the center */
-            background: radial-gradient(circle at center, #0e161d 0%, var(--bg-color) 80%);
-        }
-
-        .hero-content {
             text-align: center;
-            max-width: 1100px;
+            background: radial-gradient(circle at center, #0e161d 0%, var(--bg-color) 80%);
+            padding: 0 20px;
         }
 
         .tagline {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 6px;
             color: var(--accent-color);
             text-transform: uppercase;
-            margin-bottom: 24px;
-            display: block;
-            font-weight: 400;
+            margin-bottom: 20px;
         }
 
         .motto {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 8vw, 6.5rem); /* Responsive font size */
+            font-size: clamp(2.5rem, 8vw, 6rem);
             line-height: 1;
-            font-weight: 800;
             margin-bottom: 40px;
-            background: linear-gradient(to bottom, #ffffff 40%, #444444 100%);
+            background: linear-gradient(to bottom, #ffffff 40%, #555555 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .sub-info {
+        .general-info {
             font-size: 1.1rem;
             color: var(--text-dim);
-            max-width: 550px;
-            margin: 0 auto;
+            max-width: 600px;
             font-weight: 300;
-            letter-spacing: 0.5px;
         }
 
-        /* BUTTONS */
-        .cta-container {
-            margin-top: 50px;
-        }
-
-        .btn-primary {
-            background: none;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
-            padding: 15px 35px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary:hover {
-            background: var(--text-main);
-            color: var(--bg-color);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-        }
-
-        /* SCROLL INDICATOR */
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #333;
+        /* SECTION 2: THE MISSION */
+        .mission {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-accent);
+            padding: 100px 20px;
+            border-top: 1px solid #111;
+        }
+
+        .mission-content {
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
         }
 
-        .line {
-            width: 1px;
-            height: 50px;
-            background: linear-gradient(to bottom, #333, transparent);
-            margin-top: 10px;
+        .mission-header span {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
-        /* RESPONSIVE ADJUSTMENTS */
-        @media (max-width: 768px) {
+        .mission-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-top: 15px;
+            line-height: 1.2;
+        }
+
+        .mission-body p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .highlight-box {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 25px;
+            margin-top: 40px;
+        }
+
+        .highlight-box h3 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .mission-content { grid-template-columns: 1fr; text-align: left; }
             nav { padding: 20px; }
-            .nav-links { display: none; } /* Hide menu on mobile for now */
             .motto { font-size: 3.5rem; }
         }
     </style>
@@ -175,42 +151,40 @@
 <body>
 
     <nav>
-        <div class="logo"> ORK </div>
-        <div class="nav-links">
-            <span>Vision</span>
-            <span>Tech</span>
-            <span>Clinical</span>
-            <span>Contact</span>
-        </div>
+        <div class="logo">ORK</div>
     </nav>
 
+    <!-- SECTION 1: IDENTITY & MOTTO -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="tagline">The New Frontier of Health</span>
-            
-            <!-- Your Company Motto -->
-            <h1 class="motto">New rhythm <br> of melody.</h1>
-            
-            <p class="sub-info">
-                ORK is a clinical-led technology firm bridging the gap between health care 
-            and technology to synchronize the future of medical care.
-            </p>
-
-            <div class="cta-container">
-                <button class="btn-primary">Explore our Mission</button>
-            </div>
-        </div>
-
-        <div class="scroll-hint">
-            Scroll to Explore
-            <div class="line"></div>
-        </div>
+        <span class="tagline">Healthcare Technology</span>
+        <h1 class="motto">New Rhythm <br> of Melody.</h1>
+        <p class="general-info">
+            ORK is a clinical-led technology firm bridging the gap between nursing expertise 
+            and health informatics to synchronize the future of medical care.
+        </p>
     </section>
 
-    <!-- 
-       Note: We will add Section 2 (The Mission) 
-       directly under this Hero section next! 
-    -->
+    <!-- SECTION 2: THE MISSION -->
+    <section class="mission">
+        <div class="mission-content">
+            <div class="mission-header">
+                <span>02 / OUR MISSION</span>
+                <h2>A Mission to Synchronize Iraq's Healthcare.</h2>
+            </div>
+            <div class="mission-body">
+                <p>
+                    Modernizing a healthcare system requires more than just software; it requires a deep understanding of the clinical workflow. We are here to lead the digital evolution of Iraq’s medical landscape.
+                </p>
+                <p>
+                    By integrating nursing wisdom with advanced Health Informatics, we transform fragmented data into a seamless "New Rhythm"—ensuring technology serves the provider and the patient with melody, not noise.
+                </p>
+                <div class="highlight-box">
+                    <h3>The Informatics Catalyst</h3>
+                    <p>Turning clinical challenges into technological solutions for a sustainable, modern health infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
