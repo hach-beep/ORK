@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORK | Advanced Healthcare Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #001a33;
+            --brand-blue: #0066ff;
+            --brand-glow: rgba(0, 102, 255, 0.15);
+            --bg-slate: #f8fafc;
+            --white: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-slate); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Background Decor */
+        .bg-glow { position: absolute; top: -10%; right: -10%; width: 50%; height: 50%; background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%); z-index: -1; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: fixed; width: 100%; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--brand-navy); letter-spacing: -1px; }
+        .logo span { color: var(--brand-blue); }
+        .nav-links a { text-decoration: none; color: var(--text-main); margin-left: 40px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--brand-blue); }
+        .cta-btn { background: var(--brand-navy); color: white !important; padding: 12px 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,26,51,0.2); }
+
+        /* Hero Section */
+        .hero { padding: 180px 8% 100px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .hero-tag { background: var(--brand-glow); color: var(--brand-blue); padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 20px; }
+        .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1; color: var(--brand-navy); margin-bottom: 25px; letter-spacing: -2px; }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+
+        /* Mockup Card */
+        .mockup-container { background: var(--white); border-radius: 24px; padding: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); position: relative; }
+        .mockup-header { display: flex; gap: 8px; margin-bottom: 15px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #eee; }
+
+        /* Features Grid */
+        .section { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--brand-navy); margin-bottom: 15px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: var(--white); padding: 50px 40px; border-radius: 24px; transition: 0.4s; border: 1px solid rgba(0,0,0,0.03); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,102,255,0.1); border-color: var(--brand-blue); }
+        .icon-box { width: 60px; height: 60px; background: var(--bg-slate); border-radius: 16px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+
+        /* Technical Specs Section */
+        .tech-spec { background: var(--brand-navy); color: var(--white); border-radius: 40px; margin: 0 4%; padding: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .tech-spec h2 { font-size: 3rem; margin-bottom: 20px; }
+        .spec-item { margin-bottom: 30px; padding-left: 20px; border-left: 3px solid var(--brand-blue); }
+        .spec-item h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .spec-item p { color: #94a3b8; font-size: 0.9rem; }
+
+        /* Founder Quote */
+        .quote-section { background: var(--white); text-align: center; padding: 120px 15%; }
+        .quote-text { font-size: 2rem; font-weight: 300; font-style: italic; color: var(--brand-navy); margin-bottom: 30px; line-height: 1.4; }
+        .founder-info strong { font-size: 1.1rem; color: var(--brand-blue); }
+
+        footer { background: #fff; padding: 80px 8% 40px; border-top: 1px solid #eee; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 2fr; text-align: left; margin-bottom: 60px; }
+        
+        @media (max-width: 1024px) {
+            .hero, .feature-grid, .tech-spec { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .tech-spec { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">ORK<span>.</span></div>
+        <div class="nav-links">
+            <a href="#solutions">Solutions</a>
+            <a href="#technology">Technology</a>
+            <a href="#about">Philosophy</a>
+            <a href="patient.html" class="cta-btn">Patient Portal</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">V2.0 LIVE IN IRAQ</div>
+            <h1>Building the Future of <span>Clinical Intelligence.</span></h1>
+            <p>ORK develops mission-critical infrastructure for medical institutions, balancing high-load patient flow with industry-leading data isolation.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#solutions" style="background:var(--brand-blue); color:white; padding:18px 36px; border-radius:14px; text-decoration:none; font-weight:700; box-shadow: 0 10px 30px rgba(0,102,255,0.3);">Enterprise Demo</a>
+                <a href="#technology" style="background:white; color:var(--brand-navy); padding:18px 36px; border-radius:14px; text-decoration:none; font-weight:700; border:1px solid #ddd;">Technical Whitepaper</a>
+            </div>
+        </div>
+        <div class="mockup-container">
+            <div class="mockup-header">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div style="width:100%; height:350px; background:var(--bg-slate); border-radius:12px; display:flex; align-items:center; justify-content:center; color:#cbd5e1; font-weight:bold;">
+                Clinco Parallel Dashboard Interface
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="solutions">
+        <div class="section-header">
+            <h2>Engineered for Chaos.</h2>
+            <p>Our core product, <b>Clinco</b>, handles the complexity of Iraqi medical volume with surgical precision.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon-box">⚡</div>
+                <h3>Dynamic Flow</h3>
+                <p>Proprietary 8:2 queuing algorithm that synchronizes digital bookings with on-site walk-ins in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🛡️</div>
+                <h3>Offline Engine</h3>
+                <p>Enterprise-grade synchronization allows clinics to function at 100% capacity without internet connectivity.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🧪</div>
+                <h3>Parallel EMR</h3>
+                <p>Optimized interface for high-speed doctors, allowing multiple simultaneous patient encounters.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-spec" id="technology">
+        <div class="tech-content">
+            <h2>The Technical Stack.</h2>
+            <div class="spec-item">
+                <h4>Multi-tenant Firestore</h4>
+                <p>Total data isolation using advanced security rules. Clinic A never exists in the same logical space as Clinic B.</p>
+            </div>
+            <div class="spec-item">
+                <h4>FCM Instant Triggers</h4>
+                <p>Prop
