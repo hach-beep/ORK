@@ -1,209 +1,216 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+        <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORK | New Rhythm of Remedy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>HealthTech | Visionary Future</title>
+    
+    <!-- Google Fonts for that 'Exclusive' Tech Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
-        .hero-gradient { background: radial-gradient(circle at top right, #e0f2fe, transparent), radial-filter(circle at bottom left, #f0fdfa, transparent); }
-        .bento-card { transition: all 0.3s ease; border: 1px solid #f1f5f9; }
-        .bento-card:hover { transform: translateY(-5px); border-color: #0d9488; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        /* CSS VARIABLES - Easy to change colors here */
+        :root {
+            --bg-color: #050505;        /* Deep Obsidian */
+            --accent-color: #00ffcc;    /* Surgical Teal */
+            --text-main: #ffffff;       /* Pure White */
+            --text-dim: #888888;        /* Muted Grey */
+            --glow: rgba(0, 255, 204, 0.15);
+        }
+
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,5,5,1), rgba(5,5,5,0));
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .nav-links span {
+            margin-left: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-links span:hover {
+            color: var(--accent-color);
+        }
+
+        /* HERO SECTION (SECTION 1) */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0 20px;
+            /* Subtle radial glow in the center */
+            background: radial-gradient(circle at center, #0e161d 0%, var(--bg-color) 80%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1100px;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: block;
+            font-weight: 400;
+        }
+
+        .motto {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 6.5rem); /* Responsive font size */
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 40px;
+            background: linear-gradient(to bottom, #ffffff 40%, #444444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-info {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* BUTTONS */
+        .cta-container {
+            margin-top: 50px;
+        }
+
+        .btn-primary {
+            background: none;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            padding: 15px 35px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, #333, transparent);
+            margin-top: 10px;
+        }
+
+        /* RESPONSIVE ADJUSTMENTS */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* Hide menu on mobile for now */
+            .motto { font-size: 3.5rem; }
+        }
     </style>
 </head>
-<body class="bg-white text-slate-900 selection:bg-teal-100">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-bold text-xl">O</div>
-                <span class="text-xl font-bold tracking-tight">ORK<span class="text-teal-600">.</span></span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-                <a href="#vision" class="hover:text-teal-600 transition-colors">Vision</a>
-                <a href="#clinco" class="hover:text-teal-600 transition-colors">Clinco Platform</a>
-                <a href="#technology" class="hover:text-teal-600 transition-colors">Technology</a>
-                <a href="#founder" class="hover:text-teal-600 transition-colors">Team</a>
-            </div>
-            <a href="mailto:YOUR_EMAIL" class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-sm font-semibold hover:bg-teal-600 transition-all">Get in Touch</a>
+    <nav>
+        <div class="logo">MED-TECH-X</div>
+        <div class="nav-links">
+            <span>Vision</span>
+            <span>Tech</span>
+            <span>Clinical</span>
+            <span>Contact</span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-40 pb-24 px-6 hero-gradient overflow-hidden">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest mb-8">
-                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span></span>
-                Innovation in Iraq
-            </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[1.1]">
-                New rhythm of <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">remedy.</span>
-            </h1>
-            <p class="max-w-2xl mx-auto text-xl text-slate-600 mb-12 font-medium">
-                We are architecting the digital foundation of Iraqi healthcare. Building seamless bridges between medical technology, insurance infrastructure, and patient care.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#clinco" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:scale-105 transition-all shadow-xl shadow-slate-200">Meet Clinco Platform</a>
-                <a href="YOUR_GITHUB_DEMO_URL" target="_blank" class="px-10 py-5 bg-white border border-slate-200 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                    Launch Interactive Demo 
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- The "Iraq Vision" Section (Key for the Summit) -->
-    <section id="vision" class="py-24 px-6 bg-slate-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-                    <h2 class="text-4xl font-bold mb-8 leading-tight">Digitalizing the heartbeat of the Iraqi medical sector.</h2>
-                    <p class="text-lg text-slate-600 mb-6">
-                        The transition to digital health insurance in Iraq requires more than just an app—it requires a unified data ecosystem. 
-                    </p>
-                    <p class="text-lg text-slate-600">
-                        ORK is providing the infrastructure for private practices to eliminate fragmentation, ensure data privacy, and prepare for a modern, insurance-ready healthcare landscape.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                        <div class="text-3xl font-bold text-slate-900 mb-2">90%</div>
-                        <div class="text-sm text-slate-500 font-semibold uppercase">Paper Based</div>
-                    </div>
-                    <div class="p-8 bg-teal-600 rounded-3xl shadow-sm text-white">
-                        <div class="text-3xl font-bold mb-2">100%</div>
-                        <div class="text-sm opacity-80 font-semibold uppercase">Local Expertise</div>
-                    </div>
-                    <div class="col-span-2 p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                        <div class="text-slate-900 font-bold mb-1">Modern Standards</div>
-                        <div class="text-sm text-slate-500 italic">Bridging local clinic workflows with global technical protocols.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Bento Grid -->
-    <section id="clinco" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 uppercase tracking-tighter">The Clinco Ecosystem</h2>
-                <p class="text-slate-500">A comprehensive SaaS suite for medical and dental practitioners.</p>
-            </div>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tagline">The New Frontier of Health</span>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Bento Item 1 -->
-                <div class="md:col-span-2 bento-card p-10 bg-slate-50 rounded-[2.5rem]">
-                    <div class="flex flex-col h-full justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6">
-                                <svg class="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4">Smart EMR System</h3>
-                            <p class="text-slate-600">Advanced Electronic Medical Records designed for high-speed clinical environments. Secure, searchable, and structured for seamless insurance claim verification.</p>
-                        </div>
-                        <div class="mt-10 bg-white rounded-2xl p-6 border border-slate-100 shadow-sm italic text-sm text-slate-400">
-                            [ Interactive Dashboard UI Preview Coming Soon ]
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bento Item 2 -->
-                <div class="bento-card p-10 bg-slate-900 text-white rounded-[2.5rem]">
-                    <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-teal-400">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Dynamic Booking</h3>
-                    <p class="text-slate-400">Eliminate wait times with our patient-centric scheduling engine. Integrated directly into the clinic's workflow.</p>
-                </div>
-
-                <!-- Bento Item 3 -->
-                <div class="bento-card p-10 bg-teal-50 rounded-[2.5rem]">
-                    <h3 class="text-xl font-bold mb-3">Multi-Device Access</h3>
-                    <p class="text-sm text-slate-600 mb-6">Built as a Progressive Web App (PWA) to ensure doctors stay connected on mobile, tablet, or desktop.</p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-slate-400 border border-teal-100 uppercase">iOS</span>
-                        <span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-slate-400 border border-teal-100 uppercase">Android</span>
-                        <span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold text-slate-400 border border-teal-100 uppercase">Web</span>
-                    </div>
-                </div>
-
-                <!-- Bento Item 4 -->
-                <div class="md:col-span-2 bento-card p-10 bg-white border border-slate-100 rounded-[2.5rem]">
-                    <h3 class="text-xl font-bold mb-3">Enterprise Grade Security</h3>
-                    <p class="text-slate-600">Full data isolation using a native multi-tenant architecture. Every clinic's data is siloed and encrypted to meet global health privacy standards.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Engineering/Tech Stack -->
-    <section id="technology" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#334155 1px, transparent 1px); background-size: 40px 40px;"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl">
-                <h2 class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-4">Under the Hood</h2>
-                <h3 class="text-4xl md:text-5xl font-bold mb-10 leading-tight">Native performance. <br>Cloud-scale reliability.</h3>
-                <p class="text-xl text-slate-400 mb-12">
-                    Clinco is built using **.NET MAUI** for high-performance native execution across platforms, paired with a robust **multi-tenant cloud architecture**. This ensures your practice’s data is secure, always available, and scales effortlessly as your clinic grows.
-                </p>
-                <div class="flex flex-wrap gap-8">
-                    <div class="flex items-center gap-3">
-                        <div class="w-2 h-2 rounded-full bg-teal-500"></div>
-                        <span class="font-bold tracking-tight">.NET MAUI</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                        <span class="font-bold tracking-tight">Multi-Tenant SaaS</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-                        <span class="font-bold tracking-tight">PWA Architecture</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Section -->
-    <section id="founder" class="py-24 px-6 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <div class="w-24 h-24 bg-slate-100 rounded-full mx-auto mb-8 overflow-hidden border-4 border-teal-50">
-                <!-- Replace with your actual photo -->
-                <div class="w-full h-full flex items-center justify-center text-slate-300">
-                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
-                </div>
-            </div>
-            <h2 class="text-3xl font-bold mb-2">Haiyam Khalid</h2>
-            <p class="text-teal-600 font-bold uppercase tracking-widest text-sm mb-8">Founder & Lead Engineer</p>
-            <p class="text-xl text-slate-600 italic leading-relaxed">
-                "We aren’t just building software; we are architecting the digital foundation of Iraqi healthcare. At ORK, we believe technology should be a silent partner that allows healers to focus on what matters most: the patient."
+            <!-- Your Company Motto -->
+            <h1 class="motto">Where Passion <br> Meets Precision.</h1>
+            
+            <p class="sub-info">
+                We are building a future where medical technology is as intuitive 
+                as life itself. Join us in our journey to redefine care.
             </p>
+
+            <div class="cta-container">
+                <button class="btn-primary">Explore our Mission</button>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            Scroll to Explore
+            <div class="line"></div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-                <div class="flex items-center gap-2 mb-2">
-                    <div class="w-6 h-6 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold text-xs">O</div>
-                    <span class="font-bold">ORK HealthTech</span>
-                </div>
-                <p class="text-xs text-slate-400">© 2024 ORK HealthTech Iraq. All Rights Reserved.</p>
-            </div>
-            <div class="flex gap-8 text-sm font-semibold">
-                <a href="YOUR_LINKEDIN_URL" class="text-slate-600 hover:text-teal-600 transition-colors">LinkedIn</a>
-                <a href="https://wa.me/96477XXXXXXXX" class="text-slate-600 hover:text-teal-600 transition-colors">WhatsApp</a>
-                <a href="mailto:YOUR_EMAIL" class="text-slate-600 hover:text-teal-600 transition-colors">Email</a>
-            </div>
-        </div>
-    </footer>
+    <!-- 
+       Note: We will add Section 2 (The Mission) 
+       directly under this Hero section next! 
+    -->
 
 </body>
 </html>
